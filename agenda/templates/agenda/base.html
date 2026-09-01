@@ -41,7 +41,7 @@
             Inicio
         </a>
 
-        <a href="#">
+        <a href="{% url 'eventos' %}">
             Eventos
         </a>
 
@@ -71,6 +71,7 @@
 
 <!-- JAVASCRIPT -->
 <script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/select_categoria.js' %}"></script>
 
 {% block js %}
 {% endblock %}

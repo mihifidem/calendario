@@ -1,0 +1,45 @@
+{% extends "agenda/base.html" %}
+
+{% block title %}
+ORM Django | Mi Agenda
+{% endblock %}
+
+{% block content %}
+<section class="eventos-container">
+    <div class="eventos-header">
+        <div>
+            <h1>Ejemplos de ORM en Django</h1>
+            <p>Referencia rápida de los comandos más usados.</p>
+        </div>
+        <a href="{% url 'eventos' %}" class="boton">Volver a eventos</a>
+    </div>
+
+    <div class="orm-grid">
+        {% for command in orm_examples.commands %}
+            <div class="orm-block">
+                <h3>{{ command.title }}</h3>
+                <p><strong>Query:</strong> {{ command.query }}</p>
+                <p>{{ command.description }}</p>
+
+                {% if command.result %}
+                    <ul>
+                        {% for item in command.result %}
+                            {% if item is not None %}
+                                <li>
+                                    {% if item.items %}
+                                        {{ item.id }} - {{ item.titulo }}
+                                    {% else %}
+                                        {{ item }}
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% empty %}
+                            <li>Sin resultados</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

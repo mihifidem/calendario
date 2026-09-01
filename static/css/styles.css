@@ -90,6 +90,10 @@ nav a {
     flex-wrap: wrap;
 }
 
+.rojo {
+    color: orange;
+    font-weight: bold;
+}       
 
 /* TARJETA */
 
@@ -304,6 +308,160 @@ footer p {
     margin-bottom: 22px;
 }
 
+.buscador-eventos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 24px;
+    flex-wrap: wrap;
+}
+
+.input-busqueda {
+    flex: 1;
+    min-width: 220px;
+    height: 52px;
+    padding: 14px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.buscador-eventos input {
+    flex: 1;
+    min-width: 220px;
+    padding: 14px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.buscador-eventos button,
+.buscador-eventos a {
+    border: none;
+    cursor: pointer;
+}
+
+.select-categoria {
+    min-width: 180px;
+    height: 52px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 0 14px;
+    background: white;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.formulario-crear {
+    max-width: 760px;
+    margin: 50px auto;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    border: 1px solid #dfe8f5;
+    border-radius: 22px;
+    padding: 32px;
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.12);
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.form-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #4285f4, #6aa5ff);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(66, 133, 244, 0.25);
+}
+
+.formulario-crear h1 {
+    font-size: 2rem;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.formulario-crear p {
+    color: #6b7280;
+    margin: 0;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-grupo label {
+    font-weight: 700;
+    color: #374151;
+}
+
+.form-grupo input,
+.form-grupo textarea,
+.form-grupo select {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-grupo textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.form-grupo input:focus,
+.form-grupo textarea:focus,
+.form-grupo select:focus {
+    outline: none;
+    border-color: #4285f4;
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.15);
+}
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.boton-guardar {
+    display: inline-block;
+    border: none;
+    background: linear-gradient(135deg, #4285f4, #3367d6);
+    color: white;
+    padding: 15px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 18px rgba(66, 133, 244, 0.25);
+}
+
+.boton-guardar:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #3b7ae8, #2f5fc6);
+}
+
 @media (max-width: 700px) {
     .eventos-header {
         flex-direction: column;
@@ -318,5 +476,17 @@ footer p {
     .evento-acciones {
         width: 100%;
         justify-content: flex-start;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-crear {
+        padding: 20px;
+    }
+
+    .form-header {
+        align-items: flex-start;
     }
 }

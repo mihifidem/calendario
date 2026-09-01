@@ -1,0 +1,76 @@
+{% extends "agenda/base.html" %}
+
+{% block title %}
+Mis eventos | Agregar
+{% endblock %}
+
+{% block content %}
+<section class="eventos-container">
+    <form method="POST" action="{% url 'crear_tarea' %}" class="formulario-crear">
+        {% csrf_token %}
+
+        <div class="form-header">
+            <div class="form-icon">+</div>
+            <div>
+                <h1>Crear evento</h1>
+                <p>Rellena los datos para añadir un nuevo evento a tu agenda.</p>
+            </div>
+        </div>
+
+        <div class="form-grupo">
+            <label for="titulo">Título</label>
+            <input
+                id="titulo"
+                type="text"
+                name="titulo"
+                placeholder="Ej: Reunión de equipo"
+                required
+            >
+        </div>
+
+        <div class="form-grupo">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" placeholder="Describe tu evento..."></textarea>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-grupo">
+                <label for="fecha_inicio">Fecha inicio</label>
+                <input
+                    id="fecha_inicio"
+                    type="datetime-local"
+                    name="fecha_inicio"
+                    required
+                >
+            </div>
+
+            <div class="form-grupo">
+                <label for="fecha_fin">Fecha fin</label>
+                <input
+                    id="fecha_fin"
+                    type="datetime-local"
+                    name="fecha_fin"
+                    
+                >
+            </div>
+        </div>
+
+        <div class="form-grupo">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" name="categoria" required>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}">
+                        {{ categoria.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-footer">
+            <button type="submit" class="boton-guardar">
+                Guardar evento
+            </button>
+        </div>
+    </form>
+</section>
+{% endblock %}

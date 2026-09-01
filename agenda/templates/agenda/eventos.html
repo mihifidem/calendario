@@ -8,20 +8,54 @@ Mis eventos | Mi Agenda
 
 <section class="eventos-container">
 
-```
 <div class="eventos-header">
 
     <div>
-        <h1>Mis eventos</h1>
+        <h1>Mis eventos ( {{cantidad_eventos}})</h1>
         <p>Consulta todos los eventos de tu agenda.</p>
     </div>
 
-    <a href="#" class="boton">
+    <a href="{% url 'crear_evento' %}" class="boton">
         + Crear evento
     </a>
 
 </div>
 
+<form method="get" class="buscador-eventos" id="filtro-eventos">
+    <input
+        type="text"
+        name="q"
+        value="{{ busqueda }}"
+        placeholder="Buscar eventos por palabra..."
+        aria-label="Buscar eventos"
+        class="input-busqueda"
+    >
+    <button type="submit" class="boton">Buscar</button>
+
+    <select name="categoria" id="categoria" class="select-categoria">
+        <option value="">Todas las categorías</option>
+
+        {% for categoria in categorias %}
+            <option value="{{ categoria.id }}" {% if categoria.id|stringformat:"s" == categoria_seleccionada %}selected{% endif %}>
+                {{ categoria.nombre }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <select name="orden" class="select-categoria">
+        <option value="fecha_inicio" {% if orden == 'fecha_inicio' %}selected{% endif %}>Ordenar por fecha</option>
+        <option value="titulo" {% if orden == 'titulo' %}selected{% endif %}>Ordenar por título</option>
+    </select>
+
+    <select name="direccion" class="select-categoria">
+        <option value="asc" {% if direccion == 'asc' %}selected{% endif %}>Ascendente</option>
+        <option value="desc" {% if direccion == 'desc' %}selected{% endif %}>Descendente</option>
+    </select>
+
+    {% if busqueda or categoria_seleccionada or orden != 'fecha_inicio' or direccion != 'asc' %}
+        <a href="{% url 'eventos' %}" class="btn-editar">Limpiar</a>
+    {% endif %}
+</form>
 
 <div class="lista-eventos">
 
@@ -31,11 +65,11 @@ Mis eventos | Mi Agenda
 
             <div class="evento-fecha">
                 <span class="evento-dia">
-                    {{ evento.fecha|date:"d" }}
+                    {{ evento.fecha_inicio|date:"d" }}
                 </span>
 
                 <span class="evento-mes">
-                    {{ evento.fecha|date:"M" }}
+                    {{ evento.fecha_inicio|date:"M" }}
                 </span>
             </div>
 
@@ -47,8 +81,13 @@ Mis eventos | Mi Agenda
                 </h2>
 
                 <p class="evento-hora">
-                    {{ evento.hora|time:"H:i" }}
-                </p>
+                    {{ evento.fecha_inicio|time:"H:i" }}
+                </p> 
+                {% for categoria in evento.categoria.all %}
+                    <p class="rojo">{{ categoria.nombre }}</p>
+                {% empty %}
+                    <p>No hay categorías</p>
+                {% endfor %}
 
 
                 {% if evento.descripcion %}
@@ -87,7 +126,7 @@ Mis eventos | Mi Agenda
                 Todavía no has creado ningún evento.
             </p>
 
-            <a href="#" class="boton">
+            <a href="{% url 'crear_evento' %}" class="boton">
                 Crear mi primer evento
             </a>
 
@@ -96,7 +135,6 @@ Mis eventos | Mi Agenda
     {% endfor %}
 
 </div>
-```
 
 </section>
 
