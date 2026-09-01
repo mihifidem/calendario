@@ -1,0 +1,66 @@
+# =========================
+# PYTHON
+# =========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# =========================
+# ENTORNO VIRTUAL
+# =========================
+
+venv/
+.venv/
+env/
+
+
+# =========================
+# DJANGO
+# =========================
+
+# Base de datos local
+db.sqlite3
+db.sqlite3-journal
+
+# Archivos subidos por usuarios
+media/
+
+# Archivos generados por collectstatic
+staticfiles/
+
+
+# =========================
+# VARIABLES DE ENTORNO
+# =========================
+
+.env
+.env.*
+!.env.example
+
+
+# =========================
+# IDE / EDITORES
+# =========================
+
+.vscode/
+.idea/
+
+*.swp
+*.swo
+
+
+# =========================
+# SISTEMA OPERATIVO
+# =========================
+
+.DS_Store
+Thumbs.db
+
+
+# =========================
+# LOGS
+# =========================
+
+*.log

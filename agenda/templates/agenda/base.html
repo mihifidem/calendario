@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+    {% block title %}
+        Mi Agenda
+    {% endblock %}
+</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block css %}
+{% endblock %}
+
+
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        <a href="{% url 'home' %}">
+            Mi Agenda
+        </a>
+    </div>
+
+    <div class="menu">
+        <a href="{% url 'home' %}">
+            Inicio
+        </a>
+
+        <a href="#">
+            Eventos
+        </a>
+
+        <a href="#">
+            Iniciar sesión
+        </a>
+    </div>
+</nav>
+
+
+<!-- CONTENIDO DE CADA PÁGINA -->
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>
+        Mi Agenda - Proyecto Django
+    </p>
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script src="{% static 'js/script.js' %}"></script>
+
+{% block js %}
+{% endblock %}
+```
+
+</body>
+
+</html>

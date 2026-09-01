@@ -1,0 +1,103 @@
+{% extends "agenda/base.html" %}
+
+{% block title %}
+Mis eventos | Mi Agenda
+{% endblock %}
+
+{% block content %}
+
+<section class="eventos-container">
+
+```
+<div class="eventos-header">
+
+    <div>
+        <h1>Mis eventos</h1>
+        <p>Consulta todos los eventos de tu agenda.</p>
+    </div>
+
+    <a href="#" class="boton">
+        + Crear evento
+    </a>
+
+</div>
+
+
+<div class="lista-eventos">
+
+    {% for evento in data %}
+
+        <div class="evento-card">
+
+            <div class="evento-fecha">
+                <span class="evento-dia">
+                    {{ evento.fecha|date:"d" }}
+                </span>
+
+                <span class="evento-mes">
+                    {{ evento.fecha|date:"M" }}
+                </span>
+            </div>
+
+
+            <div class="evento-info">
+
+                <h2>
+                    {{ evento.titulo }}
+                </h2>
+
+                <p class="evento-hora">
+                    {{ evento.hora|time:"H:i" }}
+                </p>
+
+
+                {% if evento.descripcion %}
+
+                    <p class="evento-descripcion">
+                        {{ evento.descripcion|truncatewords:20 }}
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="evento-acciones">
+
+                <a href="#" class="btn-editar">
+                    Editar
+                </a>
+
+                <a href="#" class="btn-eliminar">
+                    Eliminar
+                </a>
+
+            </div>
+
+        </div>
+
+
+    {% empty %}
+
+        <div class="sin-eventos">
+
+            <h2>No tienes eventos</h2>
+
+            <p>
+                Todavía no has creado ningún evento.
+            </p>
+
+            <a href="#" class="boton">
+                Crear mi primer evento
+            </a>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+```
+
+</section>
+
+{% endblock %}
